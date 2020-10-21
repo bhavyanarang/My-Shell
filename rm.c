@@ -34,7 +34,7 @@ int main(int argc, char const* arg[]){
 		char* vari=strtok(stri," ");
 		if(strcmp(vari,"rm")==0){
 			vari=strtok(NULL," ");
-			if(strcmp(vari,"-f")==0){
+			if(strcmp(vari,"-i")==0){
 				vari=strtok(NULL," ");
 			}
 		}

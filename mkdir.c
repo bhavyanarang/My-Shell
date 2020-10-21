@@ -84,7 +84,6 @@ int main(int argc, char const* arg[]){
 				strcat(temp,"/");
 				strcat(temp,vari);
 
-				//printf("%s\n",temp );
 				int x=mkdir(temp,0777);
 				if(x==-1){
 					printf("cannot create directory, it already exist\n");

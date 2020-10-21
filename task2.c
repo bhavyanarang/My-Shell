@@ -40,14 +40,11 @@ void callChdir(char* add){
 	}
 	else{
 		//for maintaining previous working directory for only "cd" command
-		strcpy(prevWorkingDirectory,cwd);
+		strcpy(prevWorkingDirectory,cwd);Step 4: Now we will set up the remote, which tells git where the repository is located.
 		strcpy(cwd,add);
 	}
 }
 void cd(char* argument){
-	// if(strcmp(argument,"-L")){
-	// 	argument=strtok(NULL," ");
-	// }
 	if(argument==NULL || strcmp(argument,"-")==0){
 		//getenv command gives the path to directory with environment variable name as mentioned
 		// this case is for cd
@@ -55,9 +52,11 @@ void cd(char* argument){
 		callChdir(prevWorkingDirectory);
 	}
 	else if(strcmp("..",argument)==0){
-		callChdir("../");				//to go to parent directory
+		callChdir("../");				
+		//to go to parent directory
 	}
-	else if(strcmp("~",argument)==0){	//go to home directory
+	else if(strcmp("~",argument)==0){	
+	//go to home directory
 		callChdir(getenv("HOME"));		
 	}
 	else{
@@ -71,8 +70,10 @@ void cd(char* argument){
 			}
 		}
 		else{
-			callChdir(argument);			//go to specified directory if error then it is displayed in
-		}								//callChdir itslef
+			callChdir(argument);			
+			//go to specified directory if error then it is displayed in
+		}								
+		//callChdir itslef
 	}
 }
 void pwd(char* argument){
@@ -81,7 +82,7 @@ void pwd(char* argument){
 			printf("%s\n",cwd);
 		}
 		else if(strcmp(argument,"--help")==0){
-			FILE* help=fopen("/home/bhavya/Desktop/os/assign1/ques2/pwdhelp.txt","r");
+			FILE* help=fopen("/home/bhavya/Desktop/os/assign1/My-Shell/pwdhelp.txt","r");
 			char out[1000];
 			while(fgets(out,sizeof(out),help)!=NULL){
 				fputs(out,stdout);
@@ -98,9 +99,10 @@ void pwd(char* argument){
 }
 void history(char* argument){
 	if(argument==NULL){
-		FILE* his=fopen("/home/bhavya/Desktop/os/assign1/ques2/historystore.txt","r");
+		FILE* his=fopen("/home/bhavya/Desktop/os/assign1/My-Shell/historystore.txt","r");
 		char out[1000];
-		int line=0;						//to read history
+		int line=0;						
+		//to read history
 		while(fgets(out,sizeof(out),his)!=NULL){
 			line+=1;
 			printf(" %d\t",line);
@@ -109,15 +111,16 @@ void history(char* argument){
 		fclose(his);
 	}
 	else{
-		if(strcmp(argument,"-c")==0){	//to clear history
-			FILE* his=fopen("/home/bhavya/Desktop/os/assign1/ques2/historystore.txt","w");
+		if(strcmp(argument,"-c")==0){	
+		//to clear history
+			FILE* his=fopen("/home/bhavya/Desktop/os/assign1/My-Shell/historystore.txt","w");
 			fclose(his);
 			historyLines=0;
 		}
 		else if(strcmp(argument,"-s")==0){
-				//to add argument after -s to another line in history
+		//to add argument after -s to another line in history
 			argument=strtok(NULL," ");
-			FILE* his=fopen("/home/bhavya/Desktop/os/assign1/ques2/historystore.txt","a");
+			FILE* his=fopen("/home/bhavya/Desktop/os/assign1/My-Shell/historystore.txt","a");
 			while(argument!=NULL){
 				fprintf(his, "%s ",argument);
 				argument=strtok(NULL," ");
@@ -127,7 +130,7 @@ void history(char* argument){
 			historyLines+=1;
 		}
 		else if(strcmp(argument,"--help")==0){
-			FILE* help=fopen("/home/bhavya/Desktop/os/assign1/ques2/historyhelp.txt","r");
+			FILE* help=fopen("/home/bhavya/Desktop/os/assign1/My-Shell/historyhelp.txt","r");
 			char out[1000];
 			while(fgets(out,sizeof(out),help)!=NULL){
 				fputs(out,stdout);
@@ -152,7 +155,7 @@ void exitt(char* token){
 	}
 }
 void maintainHistoryStore(char* argument){
-	FILE* his=fopen("/home/bhavya/Desktop/os/assign1/ques2/historystore.txt","a");
+	FILE* his=fopen("/home/bhavya/Desktop/os/assign1/My-Shell/historystore.txt","a");
 	fprintf(his, "%s\n",argument);
 	fclose(his);
 	historyLines+=1;
@@ -201,31 +204,31 @@ void callExternalCommand(char* token,char input[]){
 
 	if(strcmp(token,"ls")==0){
 		token=strtok(NULL," ");
-		execl("/home/bhavya/Desktop/os/assign1/ques2/ls",token,NULL);
+		execl("/home/bhavya/Desktop/os/assign1/My-Shell/ls",token,NULL);
 	}
 	else if(strcmp(token,"cat")==0){
 		token=strtok(NULL," ");
-		execl("/home/bhavya/Desktop/os/assign1/ques2/cat",token,input,NULL);
+		execl("/home/bhavya/Desktop/os/assign1/My-Shell/cat",token,input,NULL);
 	}
 	else if(strcmp(token,"date")==0){
 		token=strtok(NULL," ");
 		
-		execl("/home/bhavya/Desktop/os/assign1/ques2/date",token,NULL);
+		execl("/home/bhavya/Desktop/os/assign1/My-Shell/date",token,NULL);
 	}
 	else if(strcmp(token,"rm")==0){
 		token=strtok(NULL," ");
-		execl("/home/bhavya/Desktop/os/assign1/ques2/rm",token,input,NULL);
+		execl("/home/bhavya/Desktop/os/assign1/My-Shell/rm",token,input,NULL);
 		
 	}
 	else if(strcmp(token,"mkdir")==0){
 		token=strtok(NULL," ");
-		execl("/home/bhavya/Desktop/os/assign1/ques2/mkdir",token,input,NULL);
+		execl("/home/bhavya/Desktop/os/assign1/My-Shell/mkdir",token,input,NULL);
 		
 	}
 
 }
 void callHelp(){
-	FILE* help=fopen("/home/bhavya/Desktop/os/assign1/ques2/help.txt","r");
+	FILE* help=fopen("/home/bhavya/Desktop/os/assign1/My-Shell/help.txt","r");
 	char out[1000];
 	while(fgets(out,sizeof(out),help)!=NULL){
 		fputs(out,stdout);
@@ -289,7 +292,6 @@ int main(int arg,char const *argc[]){
 				printf("Command not found\n");
 				printf("Enter help for supported commands\n");
 			}
-			//printf("noii\n");
 		}
 
 	}

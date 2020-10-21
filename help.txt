@@ -3,7 +3,7 @@ Supported commands are as follows:
 INTERNAL COMMANDS:
 
 1) cd command
-					cd -P				(by default) 
+					cd -L				(by default) 
 					cd --help			(for help)
 					cd -				(for going to previous working directory)
 					cd ..				(for going to parent directory)
@@ -12,7 +12,7 @@ INTERNAL COMMANDS:
 
 2) pwd command
 					pwd					(for printing working directory)
-					pwd -P 				(for printing default working directory)
+					pwd -L 				(for printing default working directory)
 					pwd --help			(for pwd help)
 
 3) history command

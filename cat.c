@@ -82,7 +82,6 @@ int main(int argc, char const* arg[]){
 		}
 	}
 	else if(strcmp(token,"--help")==0){	
-		//add help file
 		printf("Help in cat Command\n");
 		
 	}
