@@ -1,0 +1,30 @@
+Roll Number: 2019462
+Name: Bhavya Narang
+
+Description of all command and where abouts is given in the help text file which can also be run during the program execution by simply pressing 'help'.
+Various command contains a help option for available commands.
+
+Errors handled for each command:
+When some argument is overburdened an error is thrown, also a common error for unknown command is thrown in case when a command not present in help.txt is inputted.
+Also error particular to specific commands have also been handled.
+Also when making child process if the fork fails that error is also handled.
+
+For history I have made a txt file which stores all history and whenevr user inputs a command it is stored into that file.
+
+Assumption made:
+as ln is used to implement symbolic link and we did not have to implement ln physical address will be the same as symbolic address that is -P command will work in the same way as -L command.
+
+Overview of the code:
+I have creater helper functions wherever possible to depict modularity.
+When the user inputs a command the first token checks if the command is internal or external.
+
+If internal: the array of tokens if forwarded to function particularly implemented for that command since it is internal.
+
+If external:
+a fork is done and a child process is made which calls the function callExternalCommand which then further makes the system call execl from the family of calls exec. Then flow is directed to external file contaning particulars for a mentioned command. Also when child process finishes execution the PARENT PROCESS CALLS WAIT so that the process does not become ZOMBIE.
+
+The specific function/file prints out the required output/functionality to the stdout/execution.
+
+Makefile:
+makefile is attcahed and shell is the command which should be run after calling make to start execution.
+Also after execution user can press 'make clean' in order to clean the specific object files.

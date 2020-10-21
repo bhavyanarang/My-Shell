@@ -1,0 +1,7 @@
+Commands available and utility:
+
+'history': displays full history of commands
+'history -c': clears full history of commands
+'history -s arg': appends argument at end of history file
+'history --help': displays this text file
+

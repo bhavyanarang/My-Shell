@@ -1,0 +1,59 @@
+Supported commands are as follows:
+
+INTERNAL COMMANDS:
+
+1) cd command
+					cd -P				(by default) 
+					cd --help			(for help)
+					cd -				(for going to previous working directory)
+					cd ..				(for going to parent directory)
+					cd ~ 				(for hoing to home directory)
+					cd DName			(for going to directory DName)
+
+2) pwd command
+					pwd					(for printing working directory)
+					pwd -P 				(for printing default working directory)
+					pwd --help			(for pwd help)
+
+3) history command
+					history			(printing all history of shell to date)
+					history -c 			(for clearing history)
+					history -s arg			(appending arg to history at the end)
+					history --help		(for help)
+
+4) echo command
+					echo string			(prints string)
+					echo --help			(prints echo help)
+
+5) exit command:	
+					exit					(for exitting shell)
+					exit --help				(for exit help)
+
+
+EXTERNAL COMMANDS:
+
+1) rm command
+					rm fname			(removing file fname)
+					rm -f fname			(this does not generate error in any case)
+					rm -i fname			(asks user before removing fname)
+
+2) ls command
+					ls					(displays files present)
+					ls -R 				(recursively prints file directories)
+					ls -a 				(prints all files including hidden ones)
+
+3) date command 
+					date				(prints date and time)
+					date -u 			(prints utc date and time)
+					date --help 		(prints help)
+
+4) cat command
+	 				cat	--help			(prints cat help)
+					cat -n fname		(prints line number along with each line)
+					cat -E fname 		(prints dollar after each line)
+
+5) mkdir command
+		 			mkdir fname			(creates fname directory)
+					mkdir --help		(prints mkdir help)
+					mkdir -v fname		(prints created after creating file)
+					mkdir -p fname 		(makes fname in parent directory)
